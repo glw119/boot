@@ -1,0 +1,43 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: admins
+    url: jdbc:mysql://localhost:3306/admin?characterEncoding=UTF-8&useSSL=false
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    default-executor-type: reuse
+    default-statement-timeout: 25
+    local-cache-scope: session
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    jdbc-type-for-null: null
+pagehelper:
+  helper-dialect: mysql
+  offset-as-page-num: true
+  row-bounds-with-count: true
+  page-size-zero: true
+  reasonable: true
+  params: pageNum=page;pageSize=row;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero
+  support-methods-arguments: true
+  auto-runtime-dialect: false
+  close-conn: true
+logging:
+  level:
+    com:
+      guoliangwu:
+        boot:
+          mapper: trace
+redis:
+  open: false
